@@ -22,17 +22,34 @@
 
 1. Create `server/` directory
     1. Open it in VSCode terminal: `cd server`
-    2. Create `server/package.json` file: `npm init -y`
+    2. Create `server/package.json` file: `yarn init -y`
 
-2. Install back-end dependencies: `npm i graphql express-graphql express axios cors`
+2. Install back-end dependencies: `yarn i graphql express-graphql express axios cors helmet`
 3. Install `nodemon` for development: `yarn i -D nodemon`
 4. Create `server/server.js`
 5. Add following script to root `package.json`:
     ```
-    "scripts": {
-                "client": "vite",
-                "server": "nodemon server/server.js",
-                "dev": "concurrently \"yarn run server\" \"yarn run client\""
-                }
+      "scripts": {
+            "start": "node server.js",
+            "server": "nodemon server.js"
+        }
     ```
-6. Start front-end & back-end servers: `npm run dev`
+6. Start the server: `node server.js`
+7. Test GraphQL queries with VSCode **Thunder Client** extension:
+    1. Create a **POST** request to `http://localhost:5000/graphql`
+    2. Select **Body** > **GraphQL** tab
+    3. Request certain fields with GraphQL Query:
+        ```
+            {
+                launches {
+                        flight_number,
+                        mission_name
+                        rocket{
+                                rocket_id,
+                                rocket_name,
+                                rocket_type 
+                            }
+                    }
+            }
+        ```
+    4. Click **Send** and see the response    
