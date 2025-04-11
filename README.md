@@ -35,21 +35,39 @@
         }
     ```
 6. Start the server: `node server.js`
-7. Test GraphQL queries with VSCode **Thunder Client** extension:
-    1. Create a **POST** request to `http://localhost:5000/graphql`
-    2. Select **Body** > **GraphQL** tab
-    3. Request certain fields with GraphQL Query:
-        ```
-            {
-                launches {
-                        flight_number,
-                        mission_name
-                        rocket{
-                                rocket_id,
-                                rocket_name,
-                                rocket_type 
-                            }
-                    }
+
+## Test GraphQL queries
+
+### Request Certain Data Fields
+1. Install VSCode **Thunder Client** extension:
+2. Create a **POST** request to `http://localhost:5000/graphql`
+3. Select **Body** > **GraphQL** tab
+4. Request certain fields with GraphQL Query:
+        
+```
+{
+    launches {
+                flight_number,
+                mission_name,
+                rocket{
+                        rocket_id,
+                        rocket_name,
+                        rocket_type 
+                     }
             }
-        ```
-    4. Click **Send** and see the response    
+}
+```
+5. Click **Send** and see the response   
+
+
+### Request Certain Data Type
+1. Request single launch (not a list) by flight_number:
+```
+{ 
+    launch(flight_number: 3) {
+                            mission_name
+                        }
+}
+```
+
+2. Click **Send** and see the response  

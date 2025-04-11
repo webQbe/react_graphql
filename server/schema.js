@@ -46,6 +46,18 @@ const RootQuery = new GraphQLObjectType({
                 return axios.get('https://api.spacexdata.com/v3/launches')
                     .then(res => res.data);
             }
+        },
+        launch: { // name of the GraphQL query
+            type: LaunchType, // type of data returned – one Launch, not a list
+            args: { // Arguments the query takes
+                flight_number: { type: GraphQLInt } // flight_number of type Int
+            },
+            resolve(parent, args) { // Runs when someone queries 'launch'
+                // Get data from the API
+                return axios      
+                    .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
+                    .then(res => res.data);
+            }
         }
     }
 });
