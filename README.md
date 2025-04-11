@@ -64,9 +64,14 @@
 1. Request single launch (not a list) by flight_number:
 ```
 { 
-    launch(flight_number: 3) {
-                            mission_name
-                        }
+    launch (flight_number: 2) {
+        mission_name,
+        launch_year,
+        launch_success,
+        rocket {
+                rocket_name
+        }
+    }
 }
 ```
 
