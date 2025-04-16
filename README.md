@@ -81,7 +81,7 @@
 
 ### Create Frontend
 
-1. Download and Install **Node.js**
+1. Download and Install **Node.js** on project root directory
 2. Open project folder in VSCode Integrated Terminal
 3. Install Vite on terminal:
     - Run `npm create vite@latest .`
@@ -96,6 +96,10 @@
     2. Install Concurrently: 
         ```
         npm install concurrently --save-dev
+        ```
+    3. Install Apollo Client & GraphQL:
+        ```
+        yarn add @apollo/client graphql    
         ```
 6. Add following script to root `package.json`:
     ```
