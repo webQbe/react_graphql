@@ -24,21 +24,22 @@
     1. Open it in VSCode terminal: `cd server`
     2. Create `server/package.json` file: `yarn init -y`
 
-2. Install back-end dependencies: `yarn i graphql express-graphql express axios cors helmet`
+2. Install back-end dependencies: `yarn i graphql express-graphql express axios cors concurrently`
 3. Install `nodemon` for development: `yarn i -D nodemon`
 4. Create `server/server.js`
-5. Add following script to root `package.json`:
+5. Add following script to `server/package.json`:
     ```
-      "scripts": {
+       "scripts": {
             "start": "node server.js",
             "server": "nodemon server.js"
         }
     ```
 6. Start the server: `node server.js`
 
-## Test GraphQL queries
 
-### Request Certain Data Fields
+### Test GraphQL queries
+
+#### Request Certain Data Fields
 1. Install VSCode **Thunder Client** extension:
 2. Create a **POST** request to `http://localhost:5000/graphql`
 3. Select **Body** > **GraphQL** tab
@@ -60,7 +61,7 @@
 5. Click **Send** and see the response   
 
 
-### Request Certain Data Type
+#### Request Certain Data Type
 1. Request single launch (not a list) by flight_number:
 ```
 { 
@@ -76,3 +77,42 @@
 ```
 
 2. Click **Send** and see the response  
+
+
+### Create Frontend
+
+1. Download and Install **Node.js**
+2. Open project folder in VSCode Integrated Terminal
+3. Install Vite on terminal:
+    - Run `npm create vite@latest .`
+    - Select `React` & Enter
+    - Select `JavaScript` & Enter
+
+4. Update `vite.config.js` file:
+    - Add `server: { port: 3000, }` in `defineConfig()`
+
+5. Install dependencies:
+    1. Open terminal and run `npm install`
+    2. Install Concurrently: 
+        ```
+        npm install concurrently --save-dev
+        ```
+6. Add following script to root `package.json`:
+    ```
+    "scripts": {
+            "client": "vite",                      
+            "server": "nodemon server/server.js",
+            "dev": "concurrently \"npm:server\" \"npm:client\""
+    }
+    ```
+
+7. Delete: `public/vite.svg`, `src/assets`, `src/index.css`
+    1. Remove `import './index.css'` from `src/main.jsx`
+    2. Modify and Remove from `src/App.jsx`:
+        ```
+        import reactLogo from './assets/react.svg'
+        import viteLogo from '/vite.svg'
+        ```
+    3. Clear contents in `src/App.css`
+
+8. Start frontend and backend servers: `npm run dev`
