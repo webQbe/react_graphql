@@ -2,7 +2,7 @@ import React from 'react';
 import { gql,  // to parse GraphQL query string
          useQuery 
         } from '@apollo/client';
-
+import LaunchItem from './LaunchItem'; // To handle rendering each individual launch
 
 
 // Request a list of launches with selected fields from the backend
@@ -30,18 +30,25 @@ const Launches = () => {
     if (loading) return <h4>Loading...</h4>; 
     // If the query fails, log the error to the console
     if (error) console.log(error); 
-    // When data is ready, log the data object                   
-    console.log(data)    
-
-    const test = 'test'; // a regular string   
 
   return (
-    <div>
+    <>
         <h1 className="display-4 my-3">Launches</h1>
-        
-        <h1>{ test }</h1> 
-        {/* Everything up to this point is working (good for debugging). */}
-    </div>
+        <>
+            {   // Loop through data.launches (comes from the GraphQL query)
+                data.launches.map(launch => (
+
+                    /* Render a <LaunchItem /> for each launch */
+                    <LaunchItem 
+                        // Use flight_number as a key for React to optimize rendering
+                        key={launch.flight_number}
+                        launch={launch} // Pass each launch as a prop 
+                    />
+                    
+                ))
+            }
+        </>
+    </>
   )
 }
 
