@@ -1,6 +1,7 @@
 import React from 'react'
-import classNames from 'classnames' // To add Bootstrap classes dynamically
-import dayjs from 'dayjs'           // To format and display dates in a cleaner, readable way
+import classNames from 'classnames'     // To add Bootstrap classes dynamically
+import dayjs from 'dayjs'               // To format and display dates in a cleaner, readable way
+import { Link } from 'react-router-dom' // Let users navigate without refreshing the page
 
 const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                       launch : { flight_number,
@@ -33,10 +34,13 @@ const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                         </p>
                     </div>
                     <div className="col-md-3">
-                        {/* Right - Bootstrap-styled button */}
-                        <button className="btn btn-secondary">
+                        {/* Right - Bootstrap-styled Link element */}
+                        <Link 
+                            to={`/launch/${flight_number}`} // Dynamically create a link depending on flight_number
+                            className="btn btn-secondary"
+                        >
                             Launch Details
-                        </button>
+                        </Link>
                     </div>
                 </div>
 
