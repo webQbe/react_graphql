@@ -99,7 +99,7 @@
         ```
     3. Install other packages:
         ```
-        yarn add @apollo/client graphql classnames moment react-moment   
+        yarn add @apollo/client graphql classnames moment dayjs   
         ```
 6. Add following script to root `package.json`:
     ```

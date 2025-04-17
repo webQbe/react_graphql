@@ -1,12 +1,17 @@
 import React from 'react'
 import classNames from 'classnames' // To add Bootstrap classes dynamically
+import dayjs from 'dayjs'           // To format and display dates in a cleaner, readable way
 
 const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                       launch : { flight_number,
                                  mission_name,
                                  launch_date_local,
                                  launch_success }
-                    }) => { 
+    }) => {
+
+        // Format the raw 'launch_date_local' string into a nice YYYY-MM-DD HH:mm format
+        const formattedDate = dayjs(launch_date_local).format('YYYY-MM-DD HH:mm')
+
     return (
             <div className="card card-body mb-3"> 
             {/* Bootstrap card to neatly group content */}
@@ -23,7 +28,9 @@ const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                                 { mission_name }
                             </span>
                         </h4>
-                        <p>Date: { launch_date_local }</p>
+                        <p>
+                           Date: { formattedDate }
+                        </p>
                     </div>
                     <div className="col-md-3">
                         {/* Right - Bootstrap-styled button */}
