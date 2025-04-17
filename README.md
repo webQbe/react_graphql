@@ -97,9 +97,9 @@
         ```
         npm install concurrently --save-dev
         ```
-    3. Install Apollo Client & GraphQL:
+    3. Install other packages:
         ```
-        yarn add @apollo/client graphql    
+        yarn add @apollo/client graphql classnames moment react-moment   
         ```
 6. Add following script to root `package.json`:
     ```

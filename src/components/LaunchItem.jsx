@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames' // To add Bootstrap classes dynamically
 
 const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                       launch : { flight_number,
@@ -13,7 +14,15 @@ const LaunchItem = ({ // Destructure {launch} prop passed from Launches
                     {/* A 2-column Bootstrap layout */}
                     <div className="col-md-9">
                         {/* Left - Shows mission name and date */}
-                        <h4>Mission: { mission_name }</h4>
+                        <h4>Mission:{' '}
+                            {/* Conditionally apply Bootstrap text color classes */}
+                            <span className={classNames({
+                                'text-success': launch_success, /* Color text green if launch_success is true */
+                                'text-danger': !launch_success  /* Color text red if launch_success is false */
+                            })}>
+                                { mission_name }
+                            </span>
+                        </h4>
                         <p>Date: { launch_date_local }</p>
                     </div>
                     <div className="col-md-3">
