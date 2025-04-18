@@ -37,14 +37,24 @@ const Launch = () => {
     if (loading) return <h4>Loading...</h4>
     if (error) console.log(error)
 
-    console.log(data) // confirm that correct data is being returned
-
-    const test = 'test' // rendering a placeholder heading while testing
+    /* Destructure data.launch object directly */
+    const {
+        // Pull out top-level values
+        mission_name,
+        launch_year,
+        launch_success,
+        // Destructure nested rocket object
+        rocket: { rocket_id, rocket_name, rocket_type }
+    } = data.launch
 
   return (
     <>
         <h1>Launch</h1>
-        <h2>{ test }</h2>
+        {/* Display Mission Name */}
+        <h2 className="display-4 my-3">
+            <span className="text-dark">Mission:</span>
+            &nbsp; { mission_name }
+        </h2>
     </>
   )
 }
