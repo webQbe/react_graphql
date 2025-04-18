@@ -48,14 +48,29 @@ const Launch = () => {
     } = data.launch
 
   return (
-    <>
-        <h1>Launch</h1>
+    <div>
         {/* Display Mission Name */}
-        <h2 className="display-4 my-3">
+        <h1 className="display-4 my-3">
             <span className="text-dark">Mission:</span>
             &nbsp; { mission_name }
-        </h2>
-    </>
+        </h1>
+
+        <h4 className="mb-3">Launch Details</h4>
+
+        {/* Bootstrap styled list */}
+        <ul className="list-group"> 
+            <li className="list-group-item">
+                Flight Number: { flight_number }
+            </li>
+            <li className="list-group-item">
+                Launch Year: { launch_year }
+            </li>
+            <li className="list-group-item">
+                {/* Conditional rendering */}
+                Launch Successful: { launch_success ? 'Yes' : 'No' }
+            </li>
+        </ul>
+    </div>
   )
 }
 
