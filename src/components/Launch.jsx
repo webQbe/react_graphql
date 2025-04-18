@@ -67,7 +67,14 @@ const Launch = () => {
             </li>
             <li className="list-group-item">
                 {/* Conditional rendering */}
-                Launch Successful: { launch_success ? 'Yes' : 'No' }
+                Launch Successful:&nbsp;  
+                    <span 
+                        className={classNames({
+                            'text-success': launch_success,
+                            'text-danger': !launch_success
+                    })}>
+                        { launch_success ? 'Yes' : 'No' }
+                    </span>
             </li>
         </ul>
     </div>
